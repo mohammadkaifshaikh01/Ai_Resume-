@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "@/Services/login";
 import { addUserData } from "@/features/user/userFeatures";
 import { Sun, Moon, Menu, X } from "lucide-react"; 
-// import lightLogo from "../../assets/WhiteLogo.png";
-import darkLogo from "../../assets/DarkLogo.png";
-import resume from "../../assets/Resume.jpg"
+import darkai from "../../assets/darkai.png"
+import lightai from "../../assets/lightai.png"
+// import darkLogo from "../../assets/DarkLogo.png";
+// import resume from "../../assets/Resume.jpg"
 import { Button } from "../ui/button";
 
 function Header({ user }) {
@@ -45,9 +46,9 @@ function Header({ user }) {
       <div className="container mx-auto flex justify-between items-center p-5">
         <Link to="/">
           <img
-            src={theme === "light" ? resume : resume}
+            src={theme === "light" ? darkai : lightai}
             alt="logo"
-            className="w-24"
+            className="w-[9rem]"
           />
         </Link>
 
