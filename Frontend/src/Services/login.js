@@ -22,7 +22,7 @@ const startUser = async () => {
 
 const registerUser = async (data) => {
   try {
-    const response = await axiosInstance.post("users/register/", data);
+    const response = await axiosInstance.post("users/register", data);
     return response.data;
   } catch (error) {
     throw new Error(
