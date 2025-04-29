@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   FaUser,
   FaLock,
@@ -29,7 +29,7 @@ function AuthPage() {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email.value)) {
-      setError("Please enter a valid email address.");
+      setSignInError("Please enter a valid email address.");
       return;
     }
 
@@ -63,7 +63,7 @@ function AuthPage() {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email.value)) {
-      setError("Please enter a valid email address.");
+      setSignUpError("Please enter a valid email address.");
       return;
     }
 
@@ -100,25 +100,24 @@ function AuthPage() {
           <button
             onClick={() => setIsSignUp(false)}
             className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-colors duration-300 rounded-t-lg ${
-              !isSignUp ? "bg-green-400 text-white" : "text-gray-600"
+              !isSignUp ? "bg-indigo-600 text-white" : "text-gray-600 hover:text-indigo-600"
             }`}
           >
-            <FaSignInAlt />
+            <FaSignInAlt className={!isSignUp ? "text-white" : "text-indigo-500"} />
             Sign In
           </button>
           <button
             onClick={() => setIsSignUp(true)}
             className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-colors duration-300 rounded-t-lg ${
-              isSignUp ? "bg-green-400 text-white" : "text-gray-600"
+              isSignUp ? "bg-purple-600 text-white" : "text-gray-600 hover:text-purple-600"
             }`}
           >
-            <FaUserPlus />
+            <FaUserPlus className={isSignUp ? "text-white" : "text-purple-500"} />
             Sign Up
           </button>
         </div>
 
         <div className="relative overflow-hidden h-80">
-          {" "}
           <motion.div
             className={`absolute inset-0 transition-transform duration-500 ${
               isSignUp ? "translate-x-0" : "translate-x-full"
@@ -127,61 +126,61 @@ function AuthPage() {
             animate={{ opacity: isSignUp ? 1 : 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center text-purple-600">Sign Up</h2>
             <form onSubmit={handleSignUpSubmit} className="space-y-4">
-              <div className="flex items-center border rounded-md border-gray-300 p-2 gap-3">
-                <FaUser className="text-gray-400 mr-2" />
+              <div className="flex items-center border rounded-md border-purple-300 p-2 gap-3 focus-within:border-purple-500 focus-within:ring-1 focus-within:ring-purple-500 transition-all">
+                <FaUser className="text-purple-500" />
                 <input
                   type="text"
                   name="fullname"
                   placeholder="Full Name"
                   required
-                  className="outline-none w-full"
+                  className="outline-none w-full text-gray-800 placeholder-purple-300"
                 />
               </div>
-              <div className="flex items-center border rounded-md border-gray-300 p-2 gap-3">
-                <FaUser className="text-gray-400 mr-2" />
+              <div className="flex items-center border rounded-md border-purple-300 p-2 gap-3 focus-within:border-purple-500 focus-within:ring-1 focus-within:ring-purple-500 transition-all">
+                <FaUser className="text-purple-500" />
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
                   required
-                  className="outline-none w-full"
+                  className="outline-none w-full text-gray-800 placeholder-purple-300"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
               </div>
-              <div className="flex items-center border rounded-md border-gray-300 p-2 gap-3">
-                <FaLock className="text-gray-400 mr-2" />
+              <div className="flex items-center border rounded-md border-purple-300 p-2 gap-3 focus-within:border-purple-500 focus-within:ring-1 focus-within:ring-purple-500 transition-all">
+                <FaLock className="text-purple-500" />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   required
-                  className="outline-none w-full"
+                  className="outline-none w-full text-gray-800 placeholder-purple-300"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-gray-400 ml-2"
+                  className="text-purple-500 hover:text-purple-700"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
               <button
                 type="submit"
-                className="w-full bg-green-400 text-white py-2 rounded-md flex justify-center items-center"
+                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 rounded-md flex justify-center items-center hover:from-purple-600 hover:to-indigo-700 transition-all font-semibold"
               >
                 {loading ? (
-                  <Loader2 className=" animate-spin text-center" />
+                  <Loader2 className="animate-spin text-center" />
                 ) : (
                   "Register User"
                 )}
               </button>
               {signUpError && (
-                <div className="text-red-500 text-center mt-2">
+                <div className="text-red-500 text-center mt-2 font-medium">
                   {signUpError}
                 </div>
               )}
@@ -195,51 +194,51 @@ function AuthPage() {
             animate={{ opacity: !isSignUp ? 1 : 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold mb-4 text-center">Sign In</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center text-indigo-600">Sign In</h2>
             <form onSubmit={handleSignInSubmit} className="space-y-4">
-              <div className="flex items-center border rounded-md border-gray-300 p-2 gap-3">
-                <FaUser className="text-gray-400 mr-2" />
+              <div className="flex items-center border rounded-md border-indigo-300 p-2 gap-3 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500 transition-all">
+                <FaUser className="text-indigo-500" />
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
                   required
-                  className="outline-none w-full"
+                  className="outline-none w-full text-gray-800 placeholder-indigo-300"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
               </div>
-              <div className="flex items-center border rounded-md border-gray-300 p-2 gap-3">
-                <FaLock className="text-gray-400 mr-2" />
+              <div className="flex items-center border rounded-md border-indigo-300 p-2 gap-3 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500 transition-all">
+                <FaLock className="text-indigo-500" />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   required
-                  className="outline-none w-full"
+                  className="outline-none w-full text-gray-800 placeholder-indigo-300"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-gray-400 ml-2"
+                  className="text-indigo-500 hover:text-indigo-700"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
               <button
                 type="submit"
-                className="w-full bg-green-400 text-white py-2 rounded-md flex justify-center items-center"
+                className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-2 rounded-md flex justify-center items-center hover:from-indigo-600 hover:to-blue-700 transition-all font-semibold"
               >
                 {loading ? (
-                  <Loader2 className=" animate-spin text-center" />
+                  <Loader2 className="animate-spin text-center" />
                 ) : (
                   "Login"
                 )}
               </button>
               {signInError && (
-                <div className="text-red-500 text-center mt-2">
+                <div className="text-red-500 text-center mt-2 font-medium">
                   {signInError}
                 </div>
               )}
@@ -253,17 +252,17 @@ function AuthPage() {
               Already have an account?{" "}
               <button
                 onClick={() => setIsSignUp(false)}
-                className="text-blue-500 hover:underline"
+                className="text-indigo-600 hover:underline font-semibold"
               >
                 Sign In
               </button>
             </>
           ) : (
             <>
-              Don’t have an account?{" "}
+              Don't have an account?{" "}
               <button
                 onClick={() => setIsSignUp(true)}
-                className="text-blue-500 hover:underline"
+                className="text-purple-600 hover:underline font-semibold"
               >
                 Sign Up
               </button>
