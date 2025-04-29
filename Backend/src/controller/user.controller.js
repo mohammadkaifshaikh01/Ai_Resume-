@@ -13,6 +13,7 @@ const start = async (req, res) => {
 };
 
 const  registerUser = async (req, res) => {
+  console.log("request" , req.body)
   console.log("Registration Started");
   const { fullName, email, password } = req.body;
  

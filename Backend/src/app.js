@@ -12,12 +12,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: ['https://ai-resume-to4q.vercel.app/'],
-    credentials: true,
-  };
+    origin: 'http://localhost:5173' ,
+    credentials: true
+};
+
+
+// const corsOptions = {
+//     origin: ['https://ai-resume-to4q.vercel.app/'],
+//     credentials: true,
+//   };
   
 
-// origin: ['https://wortal-recipes.vercel.app/'],
+
 
 app.use(cors(corsOptions));
 
