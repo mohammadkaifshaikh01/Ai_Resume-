@@ -14,7 +14,7 @@ function HomePage() {
   const dispatch = useDispatch();
   const handleClick = () => {
     window.open(
-      "https://github.com/sahidrajaansari/Ai-Resume-Builder",
+      "https://github.com/mohammadkaifshaikh01/Ai_Resume-/tree/main/Frontend",
       "_blank"
     );
   };
@@ -129,7 +129,7 @@ function HomePage() {
       <footer className=" dark:bg-gray-900" aria-labelledby="footer-heading">
         <div className="p-2">
           <p className="text-xs leading-5 text-black dark:text-white">
-            &copy; 2024 Ai-Resume-Builder. All rights reserved.
+            &copy; 2025 Ai-Resume-Maker. All rights reserved Mohammad Kaif Shaikh.
           </p>
         </div>
       </footer>
