@@ -81,7 +81,8 @@ function AuthPage() {
         handleSignInSubmit(event);
       }
     } catch (error) {
-      console.log("User Registration Failed");
+      console.log("User Registration Failed" ,error);
+      console.log("User Registration Failed" ,error.message);
       setSignUpError(error.message);
     } finally {
       setLoading(false);
