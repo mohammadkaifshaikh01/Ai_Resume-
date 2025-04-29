@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: 'https://ai-resume-smoky-two.vercel.app/' ,
+    origin: ['https://ai-resume-jiut.onrender.com/'] ,
     credentials: true
 };
 
