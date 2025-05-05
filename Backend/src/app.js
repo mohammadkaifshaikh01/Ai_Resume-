@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 
 const corsOptions = {
-    origin: ['https://ai-resume-to4q.vercel.app'],
+    origin: 'https://ai-resume-to4q.vercel.app',
     credentials: true,
   };
   
